@@ -1,0 +1,59 @@
+<div>
+  <div class="row todo-form">
+    <form
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+      [formGroup]="todoForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="todo-form-field" style="width: 100%">
+        <mat-label>Task</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="enter"
+          formControlName="title"
+        />
+      </mat-form-field>
+
+      <button class="add-button" mat-flat-button [disabled]="todoForm.invalid">
+        Add
+      </button>
+    </form>
+  </div>
+
+  <div class="task-area">
+    <mat-card
+      class="task-item"
+      *ngFor="let task of tasks"
+      appearance="outlined"
+    >
+      <mat-card-content
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-checkbox
+            [checked]="task.status === taskStatus.done"
+            (change)="onDone($event, task)"
+          />
+          <mat-label
+            [ngClass]="{ 'done-title': task.status === taskStatus.done }"
+          >
+            {{ task.title }}
+          </mat-label>
+        </div>
+        <button mat-fab (click)="onDelete(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

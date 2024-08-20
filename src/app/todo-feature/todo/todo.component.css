@@ -1,0 +1,28 @@
+
+.row {
+    margin: 1em;
+    width: '100%';
+}
+
+.add-button {
+    margin-left: 1em;
+}
+
+.todo-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: '100%';
+
+}
+
+.todo-form-field {
+    margin-bottom: -1.25em !important;
+}
+
+.task-item {
+    margin: 1em;
+}
+.done-title {
+    text-decoration: line-through;
+}

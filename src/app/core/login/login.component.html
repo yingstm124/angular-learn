@@ -1,0 +1,51 @@
+<ng-container>
+  <form
+    [formGroup]="loginForm"
+    style="
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 2em;
+    "
+  >
+    <div style="width: 300px">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Enter user" formControlName="user" />
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide() ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="onVisible($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+          [disabled]="loginForm.invalid"
+        >
+          <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button mat-flat-button style="width: 100%" (click)="onLogin()">
+        login
+      </button>
+
+      <div
+        style="
+          text-align: center;
+          padding: 2em;
+          text-decoration: underline;
+          color: blue;
+          cursor: pointer;
+        "
+      >
+        <a (click)="onClickRegisterLink()">Register</a>
+      </div>
+    </div>
+  </form>
+</ng-container>
